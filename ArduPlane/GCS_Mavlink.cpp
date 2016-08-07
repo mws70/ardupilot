@@ -515,6 +515,18 @@ void Plane::send_wind(mavlink_channel_t chan)
         wind.z);
 }
 
+void Plane::send_ash_data(mavlink_channel_t chan)
+{
+    uint8_t ash_test_byte_1 = 0x01;
+    uint8_t ash_test_byte_2 = 0x02;
+    uint8_t ash_test_byte_3 = 0x03;
+    mavlink_msg_ash_data_send(
+        chan,
+        ash_test_byte_1,
+        ash_test_byte_2,
+        ash_test_byte_3);
+}
+
 /*
   send RPM packet
  */
@@ -880,6 +892,11 @@ bool GCS_MAVLINK_Plane::try_send_message(enum ap_message id)
         CHECK_PAYLOAD_SIZE(ADSB_VEHICLE);
         plane.adsb.send_adsb_vehicle(chan);
         break;
+
+    case MSG_ASH_DATA:
+        CHECK_PAYLOAD_SIZE(ASH_DATA);
+        plane.send_ash_data(chan);
+        break;
     }
     return true;
 }
@@ -1096,6 +1113,7 @@ GCS_MAVLINK_Plane::data_stream_send(void)
         send_message(MSG_EKF_STATUS_REPORT);
         send_message(MSG_GIMBAL_REPORT);
         send_message(MSG_VIBRATION);
+        send_message(MSG_ASH_DATA);
     }
 
     if (plane.gcs_out_of_time) return;
