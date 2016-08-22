@@ -339,10 +339,6 @@ void Plane::one_second_loop()
 
     ins.set_raw_logging(should_log(MASK_LOG_IMU_RAW));
 	
-	planeAshData.test_byte_1 += 1;
-	if (planeAshData.test_byte_1 >= 10) {
-		planeAshData.test_byte_1 = 0;
-	}
 }
 
 void Plane::log_perf_info()
