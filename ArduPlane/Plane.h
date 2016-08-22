@@ -808,6 +808,7 @@ private:
     void send_hwstatus(mavlink_channel_t chan);
     void send_wind(mavlink_channel_t chan);
     void send_ash_data(mavlink_channel_t chan);
+	void update_ash_data(mavlink_message_t* msg);
     void send_pid_tuning(mavlink_channel_t chan);
     void send_rpm(mavlink_channel_t chan);
     void send_rangefinder(mavlink_channel_t chan);

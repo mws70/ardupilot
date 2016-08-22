@@ -524,6 +524,17 @@ void Plane::send_ash_data(mavlink_channel_t chan)
         planeAshData.test_byte_3);
 }
 
+void Plane::update_ash_data(mavlink_message_t* msg)
+{
+	mavlink_send_ash_data_t packet;
+	mavlink_msg_send_ash_data_decode(msg, &packet);
+	
+	planeAshData.test_byte_1 = packet.send_ash_test_byte_1;
+	planeAshData.test_byte_2 = packet.send_ash_test_byte_2;
+	planeAshData.test_byte_3 = packet.send_ash_test_byte_3;
+	
+}
+
 /*
   send RPM packet
  */
@@ -2288,7 +2299,12 @@ void GCS_MAVLINK_Plane::handleMessage(mavlink_message_t* msg)
     case MAVLINK_MSG_ID_SETUP_SIGNING:
         handle_setup_signing(msg);
         break;
-    } // end switch
+		
+	case MAVLINK_MSG_ID_SEND_ASH_DATA:
+		plane.update_ash_data(msg);
+		break;
+		
+    }	// end switch
 } // end handle mavlink
 
 /*
