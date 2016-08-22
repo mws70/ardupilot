@@ -517,14 +517,11 @@ void Plane::send_wind(mavlink_channel_t chan)
 
 void Plane::send_ash_data(mavlink_channel_t chan)
 {
-    uint8_t ash_test_byte_1 = 0x01;
-    uint8_t ash_test_byte_2 = 0x02;
-    uint8_t ash_test_byte_3 = 0x03;
     mavlink_msg_ash_data_send(
         chan,
-        ash_test_byte_1,
-        ash_test_byte_2,
-        ash_test_byte_3);
+        planeAshData.test_byte_1,
+        planeAshData.test_byte_2,
+        planeAshData.test_byte_3);
 }
 
 /*

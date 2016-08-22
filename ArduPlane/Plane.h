@@ -206,6 +206,14 @@ private:
 #endif
 
     AP_RPM rpm_sensor;
+	
+	struct {
+        // ash data struct for use within plane class
+        uint8_t test_byte_1;
+        uint8_t test_byte_2;
+		uint8_t test_byte_3;
+        
+    } planeAshData { 0x04, 0x05, 0x06};
     
 // Inertial Navigation EKF
 #if AP_AHRS_NAVEKF_AVAILABLE
