@@ -209,11 +209,34 @@ private:
 	
 	struct {
         // ash data struct for use within plane class
+		uint16_t binCount0;
+		uint16_t binCount1;
+		uint16_t binCount2;
+		uint16_t binCount3;
+		uint16_t binCount4;
+		uint16_t binCount5;
+		uint16_t binCount6;
+		uint16_t binCount7;
+		uint16_t binCount8;
+		uint16_t binCount9;
+		uint16_t binCount10;
+		uint16_t binCount11;
+		uint16_t binCount12;
+		uint16_t binCount13;
+		uint16_t binCount14;
+		uint16_t binCount15;
+		float samplingPeriod;
+		float myPM1;
+		float myPM3;
+		float myPM10;
+		float myPM17_5;
+		float totalConc;
+		
         uint8_t test_byte_1;
         uint8_t test_byte_2;
 		uint8_t test_byte_3;
         
-    } planeAshData { 0x04, 0x05, 0x06};
+    } planeAshData {0};
     
 // Inertial Navigation EKF
 #if AP_AHRS_NAVEKF_AVAILABLE
