@@ -231,12 +231,7 @@ private:
 		float myPM10;
 		float myPM17_5;
 		float totalConc;
-		
-        uint8_t test_byte_1;
-        uint8_t test_byte_2;
-		uint8_t test_byte_3;
-        
-    } planeAshData {0};
+    } planeAshData {0u, 1u, 2u, 3u, 4u, 5u, 6u, 7u, 8u, 9u, 10u, 11u, 12u, 13u, 14u, 15u, 16.0f, 17.0f, 18.0f, 19.0f, 20.0f, 21.0f};
     
 // Inertial Navigation EKF
 #if AP_AHRS_NAVEKF_AVAILABLE
